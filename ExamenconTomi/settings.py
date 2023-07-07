@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'ExamenconTomi.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'joisaez',
+        'USER': 'joi.saez',
+        'PASSWORD': 'Joi.saez_2023',
+        'HOST': '164.152.54.1',
+        'PORT': 3306
     }
 }
 
