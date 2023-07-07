@@ -1,10 +1,10 @@
-from django.db.models import Model, CharField, IntegerField, ForeignKey, CASCADE, TextField, DecimalField, ImageField
+from django.db.models import Model, CharField, IntegerField, ForeignKey, CASCADE,TextField, DecimalField, ImageField, AutoField
 from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Producto(Model):
-    id = IntegerField(primary_key= True)
+    id = AutoField(primary_key= True)
     nombre = CharField(max_length=100)
     descripcion = TextField()
     precio = DecimalField(max_digits=8, decimal_places=2)
@@ -12,7 +12,7 @@ class Producto(Model):
 
 
 class Boleta(Model):
-    id_boleta = IntegerField(primary_key=True, default= 1)
-    id_usuario = ForeignKey(User,on_delete = CASCADE, primary_key=True)
-    id_producto = ForeignKey(Producto, on_delete = CASCADE, primary_key=True)
+    numero_carrito = IntegerField(null = False)
+    id_usuario = ForeignKey(User,on_delete = CASCADE)
+    id_producto = ForeignKey(Producto, on_delete = CASCADE)
     cantidad = IntegerField(null = False)
