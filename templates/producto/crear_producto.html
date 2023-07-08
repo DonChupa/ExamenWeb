@@ -1,0 +1,51 @@
+{% extends 'padre/base.html' %}
+{% block titulo %}
+    Agregar
+{% endblock titulo %}
+{% block contenido %}
+
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="fw-bold">Añadir producto</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="" class="form-label">nombre artista</label>
+                                {{ form.nombre_artista }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">nombre album</label>
+                                {{form.nombre_album }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">año</label>
+                                {{form.año}}
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Precio</label>
+                                {{form.precio}}
+                            </div>
+                             <div class="mb-3 row">
+                                <label for="" class="form-label col-12">Imagen</label>
+                                {{form.img}}
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">tipo</label>
+                                {{form.tipo }}
+                            </div>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock contenido %}

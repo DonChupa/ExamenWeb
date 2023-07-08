@@ -1,0 +1,65 @@
+{% extends 'padre/base.html' %}
+{% load static %}
+{% block titulo %}
+    Carrito
+{% endblock titulo %}
+
+{% block contenido %}
+<div class="min-vh-100 d-flex flex-colum py-4" style="background-color: rgba(240, 255, 255, 0.521); padding: 5%; border: 4px black solid;" class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-8 col-sm-6 mx-auto ">
+                    <div class="card-element table-responsive">
+                        <table class="table table-condensed">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>tipo</th>
+                                    <th colspan="3">Cantidad</th>
+                                    <th>nombre</th>
+                                    <th>Subtotal</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody class="py-4">
+                                <tr>
+                                    {% for d in producto %}
+
+                                    
+                                    <thead class="text-center">
+                                        <tr>
+                                            <th> {{ d.tipo }} </th>
+                                            <th colspan="3"> {{ d.cantidad }} </th>
+                                            <th> {{ d.producto }} </th>
+                                            <th> {{ d.precio }} </th>
+                                            <th><a href="{% url 'borrar' d.id %}" class="btn btn-sm btn-dark">x</a>
+
+
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    {% endfor %}
+                                </tr>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="card-footer mx-auto ">
+                        <a class="btn  mx-auto mt-0 " href="{% url 'boleta' %}" >Procesar Compra</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-3 my-4 mx-auto ">
+                <div class="card card-footer align-item-center ">
+                    <a href="{% url 'index' %}" class="btn  my-2 mx-auto ">Volver a Tienda</a>
+                    <a href="{% url 'borrartodo' %}" class="btn my-2 mx-auto ">Limpiar Carrito</a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

@@ -1,0 +1,23 @@
+{% extends 'padre/base.html' %}
+{% load static %}
+{% block contenido %}
+<div class="container">
+<div class="row">
+{% for p in productos %}
+<article class="card pb-3 col-4">
+    <div class="img-top">
+        <img src="{{ p.img.url }}" alt="Imagen del producto" style = "width: 100%;">
+    </div>
+    <div class="card-title"> <b>{{ p.nombre_album }} </b></div>
+    <div class="card-content"> 
+        <p>{{ p.nombre_artista }} </p>
+        año : {{ p.año }} 
+        tipo: {{ p.tipo }}
+        <a href="{% url 'crear_inventario' p.id %}" class="btn btn-sm btn-primary">   {{p.precio}} </a>
+        </form>
+</div>
+</article>
+{% endfor %}
+</div>
+</div>
+{% endblock contenido %}

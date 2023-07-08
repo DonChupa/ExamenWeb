@@ -49,6 +49,7 @@ def mostrar_registro(request):
         if es_valido: 
             usuario_nuevo = formulario_registro.save()
             success(request,'Gracias por unirte :)')
+            login(request, usuario_nuevo)
             return redirect('index')
         contexto = {
             'formulario': formulario_registro

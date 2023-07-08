@@ -1,0 +1,29 @@
+{% extends 'padre/base.html' %}
+{% block titulo %}
+    Boleta
+{% endblock titulo %}
+{% block contenido %}
+<div class="container">
+    <h1 class="mb-3 pt-3 text-center"> Boleta </h1>
+    <hr class="hr" />
+   <div style="margin-top: 3% ;background:rgba(255, 255, 255, 0.658); border:black 4px solid; border-radius: 10px; padding: 5%;">
+    <p class="container"> <h1>  compra hecha por {{nombre}}   </h1> </p>
+    <div  class="row">
+        <nav class="col-4">
+
+        </nav>
+        <nav class="col-7 offset-1">
+            {% for i in lista %}
+            <p>  {{ i.nombre }} X {{ i.precio }}  </p>
+            {% endfor %}
+            <p> total : {{ total }} </p>
+        </nav>
+    </div>
+        <fieldset class="row  container">
+            <a class="btn  mx-auto mt-0 " href="{% url 'borrar_boleta' %}" style="background-color: rgb(255, 252, 104); border: 2px black solid;">Volver </a>
+            </div>
+        </fieldset>
+    </section>
+</div>
+</div> 
+{% endblock contenido %}

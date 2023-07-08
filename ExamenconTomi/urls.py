@@ -17,10 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include 
 from .views import * 
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mostrar_index, name='index'),
-    path('registrar_usuarios/', include('applications.registrar.urls')),
+    path('usuario/', include('applications.registrar.urls')),
+    path('producto/', include('applications.m_prod.urls')),
+    path('user/', include('applications.m_user.urls')),
     
 ]
+if settings.DEBUG == True:
+ urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
