@@ -1,0 +1,61 @@
+{% load static %}
+
+    <form method="POST" action="{% url 'mostrar_registro' %}">
+
+        {% csrf_token %}
+
+            <!-- {{ formulario.as_p }} -->
+    
+            
+            
+            <label for="{{ formulario.email.id_for_label }}" >
+                {{ formulario.email.label }}
+            </label>
+            {{ formulario.email }}
+            <p class="feedback-invalid">
+                {{ formulario.email.errors }}
+            </p>
+
+
+            <label for="{{ formulario.username.id_for_label }}" >
+                {{ formulario.username.label }}
+            </label>
+            {{ formulario.username }}
+            <p class="feedback-invalid">
+                {{ formulario.username.errors }}
+            </p>
+
+
+
+            <label for="{{ formulario.password1.id_for_label }}" >
+                {{ formulario.password1.label }}
+            </label>
+            {{ formulario.password1 }}
+            {{ formulario.password1.help_text }}
+            <p class="feedback-invalid">
+                {{ formulario.password1.errors }}
+            </p>
+
+
+            <label for="{{ formulario.password2.id_for_label }}" >
+                {{ formulario.password2.label }}
+            </label>
+            {{ formulario.password2 }}
+            {{ formulario.password2.help_text }}
+            <p class="feedback-invalid">
+                {{ formulario.password2.errors }}
+            </p>
+
+    
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-primary " type="submit" role="submit">Registar</button> -->
+            <fieldset class="offset-md-4 col-md-4 col-12">
+                <div class="d-grid">
+                    <button class="btn btn-success">Registrar</button>
+                </div>
+            </fieldset>
+        </div>
+
+    </form>

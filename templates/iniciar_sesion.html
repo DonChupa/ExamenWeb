@@ -1,0 +1,82 @@
+{% extends 'padre/base.html' %}
+{% load static %}
+{% block title %}Inicio{% endblock title %}
+{% block css %}
+<link href="{% static 'dist/css/sign-in.css' %}" rel="stylesheet">
+{% endblock css %}
+{% block contenido %}
+
+  <main class="form-signin w-100 m-auto text-center">
+    <form method="POST">
+      {% csrf_token %}
+      <img class="mb-4" src="" alt="" width="300" height="300">
+      <h1 class="h3 mb-3 fw-normal">Iniciar Sesion</h1>
+
+      <div class="form-floating">
+        {{ formulario.usuario }}
+        <label for="{{ formulario.usuario.id_for_label }}">{{ formulario.usuario.label }}</label>
+      </div>
+      <div class="form-floating">
+          {{ formulario.contrasenia_usuario}}
+          <label for="{{ formulario.contrasenia_usuario.id_for_label }}">
+              {{ formulario.contrasenia_usuario.label }}
+          </label>
+      </div>
+
+      <div class="checkbox mb-3">
+          <label>
+              {{ formulario.recuerdame }} {{ formulario.recuerdame.label}}
+          </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
+    </form>
+
+    <hr class="featurette-divider">
+
+
+
+
+    <!--###### REGISTRARSE ######-->
+    <button action="{% url 'mostrar_registro' %}" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Presiona para registrarse </button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center container">
+            <img class="mb-4" src="" alt="" width="250" height="250">
+            <div class="container" id="modalContent">
+              {% block registro %}
+              {% include 'registrar.html' %}
+              {% endblock registro %}
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    // Función que se ejecuta al abrir el modal
+    function abrirModal() {
+      // Realizar la solicitud AJAX para obtener el contenido de la URL
+      fetch("{% url 'mostrar_registro' %}")
+        .then(response => response.text())
+        .then(data => {
+          // Actualizar el contenido del modal con la respuesta recibida
+          document.getElementById("modalContent").innerHTML = data;
+        })
+        .catch(error => {
+          console.error("Error al cargar el contenido del modal:", error);
+        });
+    }
+  
+    // Asignar evento al modal cuando se muestra
+    var modal = document.getElementById('exampleModal');
+    modal.addEventListener('show.bs.modal', abrirModal);
+  </script>
+
+{% endblock contenido %}
